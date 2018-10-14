@@ -19,8 +19,19 @@ namespace Model
 
         public void printInfo()
         {
-            Console.WriteLine("Nombre: " + name);
             Console.WriteLine("Rut: " + rut);
+            Console.WriteLine("Nombre: " + name);
         }
+
+        public string GetName()
+        {
+            return name;
+        }
+
+        public string GetRut()
+        {
+            return rut;
+        }
+
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Model
 {
@@ -11,20 +12,25 @@ namespace Model
         static void Main(string[] args)
         {
 
-            IOManager.printConsole("Type: \"exit\" to quit");
-
-            while (true)
+            DataManager dataManager = new DataManager();
+            dataManager.OpenCSV("data.csv");
+            List<string> dataList = dataManager.GetDataList();
+            List<Result> resultList = new List<Result>();
+            foreach(string rut in dataList)
             {
-
-                string searchText = IOManager.UserInput();
-                if (searchText == "exit")
-                {
-                    System.Environment.Exit(1);
-                }
-
-                SearchManager.SearchRut(searchText);
+                if (rut is null) { continue; }
+                SearchManager.SearchRut(rut);
                 SearchManager.print();
             }
+
+            resultList = SearchManager.resultList;
+            dataManager.WriteCSV(resultList);
+            IOManager.printConsole("Writing CSV File");
+            Console.ReadLine();
+
+
+
+
         }
     }
 }

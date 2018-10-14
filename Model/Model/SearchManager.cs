@@ -11,6 +11,7 @@ namespace Model
     static public class SearchManager
     {
         static string rut = String.Empty;
+        static public List<Result> resultList = new List<Result>();
         static WebClient web = new WebClient();
 
         static public void SearchRut(string rut)
@@ -32,14 +33,22 @@ namespace Model
                 {
                     Result result = new Result(data[0].Split(':')[1], data[1].Split(':')[1]);
                     result.printInfo();
+                    resultList.Add(result);
                 }
                 catch
                 {
                     IOManager.printConsole("Error Found!");
+                    resultList.Add(null);
                 }
             }
             
         }
+
+        static void GetResult()
+        {
+
+        }
+
     }
     
 }
