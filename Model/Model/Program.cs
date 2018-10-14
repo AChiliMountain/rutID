@@ -11,7 +11,7 @@ namespace Model
     {
         static void Main(string[] args)
         {
-
+            IOManager.printConsole("Importing data.csv");
             DataManager dataManager = new DataManager();
             dataManager.OpenCSV("data.csv");
             List<string> dataList = dataManager.GetDataList();

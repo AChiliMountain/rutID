@@ -17,7 +17,7 @@ namespace Model
         {
             this.resultList = new List<string>();
         }
-
+        
 
         public void OpenCSV(string fileName)
         {
